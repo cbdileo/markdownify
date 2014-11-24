@@ -8,7 +8,7 @@ editing field.
 `$ bower install markdownify`
 
 ## [View Demo](http://codeshoppe.io/markdownify/example/portfolio.html)
-![](http://g.recordit.co/8frgy8tW1G.gif)
+![](http://g.recordit.co/Mh3WzKTAjp.gif)
 - Demo shows markdownify being used as a profile editor
 
 ## Requirements
