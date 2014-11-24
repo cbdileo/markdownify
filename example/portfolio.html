@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Markdownify</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+      body {
+        padding-top: 50px;
+      }
+      .summary {
+        font-size: 18px;
+      }
+      textarea.form-control {
+        height: 200px;
+      }
+      p.summary {
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Edit - My Profile</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="editable">
+            <h3>What is your favorite book? <button class="btn btn-primary pull-right">Save</button></h3>
+            <div class="form-group">
+              <textarea class="form-control">
+## Clean Code
+Even bad code can function. But if code isn't clean, it can bring a development organization to its knees. Every year, countless hours and significant resources are lost because of poorly written code. But it doesn't have to be that way.
+
+### Great book
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec sapien felis. Pellentesque ullamcorper, leo quis aliquet porttitor, dui eros convallis libero, posuere egestas lacus risus eu mauris. Duis rhoncus.
+              </textarea>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="editable">
+            <h3>What is your favorite band? <button class="btn btn-primary pull-right">Save</button></h3>
+            <div class="form-group">
+              <textarea class="form-control">
+## John Gorka
+![John Gorka](http://www.thelyricarchive.com/img/pic/2501-3000/2719/main)
+
+John Gorka is a contemporary American folk musician. In 1991, Rolling Stone magazine called him "the preeminent male singer-songwriter of what has been dubbed the New Folk Movement."
+              </textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="editable">
+            <h3>What is your favorite place? <button class="btn btn-primary pull-right">Save</button></h3>
+            <div class="form-group">
+              <textarea class="form-control">
+## Japan
+
+![Japan](http://www.guardianholidayoffers.co.uk/Image.aspx?id=34082&type=TwoColumn)
+
+Japan is an island nation in East Asia. Located in the Pacific Ocean, it lies to the east of the Sea of Japan, China, North Korea, South Korea and Russia, stretching from the Sea of Okhotsk in the north to the East China Sea and Taiwan in the south.
+
+----------
+
+## Italy
+
+![Italy](http://4.bp.blogspot.com/_u1OBKhBL6FU/S5FuibqbpcI/AAAAAAAACVM/uAtVHrcQL48/s400/IMG_1271.JPG)
+              </textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../lib/marked.js"></script>
+    <script src="../src/jquery.markdownify.js"></script>
+    <script>
+    $(document).ready(function() {
+      var options = {
+        wrapper: $('<div class="well">')
+      };
+      $(".editable").markdownify(options);
+    });
+    </script>
+  </body>
+</html>
