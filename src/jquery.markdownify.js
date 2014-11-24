@@ -10,7 +10,7 @@
       settings = $.extend({
         input: workspace.find('textarea'),
         submit: workspace.find('button'),
-        wrapper: $('<div class="markdown">')
+        wrapper: $('<div class="markdownify">')
       }, options);
 
       hasRequiredLibraries = function () {
