@@ -1,0 +1,21 @@
+{
+  "name": "markdownify",
+  "version": "0.0.1",
+  "homepage": "http://codeshoppe.io/markdownify",
+  "description": "Markdownify is a jQuery plugin that makes any input/textarea a markdown editing field.",
+  "main": "src/jquery.markdownify.js",
+  "authors": [
+    "Carleton DiLeo"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "lib",
+    "spec",
+    "example",
+    "SpecRunner.html"
+  ],
+  "dependencies": {
+    "marked": ">=0.3.2"
+  }
+}
