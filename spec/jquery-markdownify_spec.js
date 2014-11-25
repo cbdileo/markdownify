@@ -10,17 +10,19 @@ describe('jquery-markdownify', function() {
   });
 
   describe('without options', function() {
-    var $markdownifyButton, $workspace;
+    var $button, $input, $workspace;
 
     beforeEach(function() {
       loadFixtures('simple_markdownify_fixture.html');
+
       $workspace = $('.workspace').markdownify();
-      $markdownifyButton = $('#submit');
+      $button = $('#submit');
+      $input = $workspace.find('textarea');
     });
 
     it("changes markdown to html", function() {
-      $workspace.find('textarea').text('## Test');
-      $markdownifyButton.click();
+      $input.text('## Test');
+      $button.click();
 
       clock.tick(9000);
 
@@ -28,8 +30,8 @@ describe('jquery-markdownify', function() {
     });
 
     it("changes html text to html", function() {
-      $workspace.find('textarea').text('<h3>Test</h3>');
-      $markdownifyButton.click();
+      $input.text('<h3>Test</h3>');
+      $button.click();
 
       clock.tick(9000);
 
@@ -38,25 +40,54 @@ describe('jquery-markdownify', function() {
   });
 
   describe('with options', function() {
-    var $markdownifyButton, $workspace;
+    var $button, $input, $workspace;
 
     beforeEach(function() {
       loadFixtures('options_markdownify_fixture.html');
 
-      $workspace = $('.workspace').markdownify({
+      $('.workspace').markdownify({
+        input: '.textfield',
+        submit: '.btn',
         wrapper: $('<p class="expected-class">')
       });
-      $markdownifyButton = $('#submit');
+
+      $input = $('#provided-input');
+      $submit = $('#provided-submit');
     });
 
-    it("uses provided wrapper", function() {
-      $workspace.find('textarea').text('# Test');
-      $markdownifyButton.click();
+    it("uses provided configuration", function() {
+      $input.val('## Special');
+      $submit.click();
 
       clock.tick(9000);
 
-      expect($('.expected-class h1').is(':visible')).toEqual(true);
+      expect($('.expected-class h2').is(':visible')).toEqual(true);
     });
   });
 
+  describe('with invalid configure', function() {
+    var $button, $input, $workspace;
+
+    beforeEach(function() {
+      loadFixtures('simple_markdownify_fixture.html');
+
+      $button = $('#submit');
+    });
+
+    it("raises error if input invalid", function() {
+      expect( function(){
+        $workspace = $('.workspace').markdownify({
+          input: 'bad'
+        });
+      }).toThrow(new Error("Unable to find 'bad' in 'markdownify'"));
+    });
+
+    it("raises error if submit invalid", function() {
+      expect( function(){
+        $workspace = $('.workspace').markdownify({
+          submit: 'bad2'
+        });
+      }).toThrow(new Error("Unable to find 'bad2' in 'markdownify'"));
+    });
+  });
 });

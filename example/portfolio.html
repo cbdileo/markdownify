@@ -75,24 +75,13 @@ John Gorka is a contemporary American folk musician. In 1991, Rolling Stone maga
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
+          <h3>What is your favorite place?</h3>
           <div class="editable">
-            <h3>What is your favorite place? <button class="btn btn-primary pull-right">Save</button></h3>
             <div class="form-group">
-              <textarea class="form-control">
-## Japan
-
-![Japan](http://www.guardianholidayoffers.co.uk/Image.aspx?id=34082&type=TwoColumn)
-
-Japan is an island nation in East Asia. Located in the Pacific Ocean, it lies to the east of the Sea of Japan, China, North Korea, South Korea and Russia, stretching from the Sea of Okhotsk in the north to the East China Sea and Taiwan in the south.
-
-----------
-
-## Italy
-
-![Italy](http://4.bp.blogspot.com/_u1OBKhBL6FU/S5FuibqbpcI/AAAAAAAACVM/uAtVHrcQL48/s400/IMG_1271.JPG)
-              </textarea>
+              <input type="text" class="form-control" value="## Japan<br>![Japan](http://www.guardianholidayoffers.co.uk/Image.aspx?id=34082&type=TwoColumn)" />
             </div>
+            <input type="button" class="btn btn-primary" value="Save" />
           </div>
         </div>
       </div>
@@ -104,6 +93,8 @@ Japan is an island nation in East Asia. Located in the Pacific Ocean, it lies to
     <script>
     $(document).ready(function() {
       var options = {
+        input: '.form-control',
+        submit: '.btn-primary',
         wrapper: $('<div class="well">')
       };
       $(".editable").markdownify(options);

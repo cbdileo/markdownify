@@ -3,35 +3,47 @@
 
   $.fn.markdownify = function(options) {
     return this.each(function() {
-      var workspace = $(this),
-      hasRequiredLibraries,
-      settings;
+      var $workspace = $(this),
+          $input,
+          $submit,
+          hasRequiredLibraries,
+          settings;
 
       settings = $.extend({
-        input: workspace.find('textarea'),
-        submit: workspace.find('button'),
+        input: 'textarea',
+        submit: 'button',
         wrapper: $('<div class="markdownify">')
       }, options);
+
+      $input = $workspace.find(settings.input);
+      if($input.length === 0) {
+        throw new Error("Unable to find '" + settings.input + "' in '" + settings.wrapper.attr('class') + "'");
+      }
+
+      $submit = $workspace.find(settings.submit);
+      if($submit.length === 0) {
+        throw new Error("Unable to find '" + settings.submit + "' in '" + settings.wrapper.attr('class') + "'");
+      }
 
       hasRequiredLibraries = function () {
         return typeof marked !== 'undefined' && $.isFunction(marked);
       };
 
-      settings.submit.click(function() {
+      $submit.click(function() {
         var newChild,
-        html;
+            html;
 
         if (hasRequiredLibraries()) {
-          html = marked(settings.input.val());
-        }
-        else {
+          html = marked($input.val());
+        } else {
           throw new Error("The JS library 'marked' is required by this plugin");
         }
 
         newChild = settings.wrapper.clone().html(html);
         newChild.hide();
-        workspace.fadeOut('fast', function(){
-          workspace.replaceWith(newChild);
+
+        $workspace.fadeOut('fast', function(){
+          $workspace.replaceWith(newChild);
           newChild.fadeIn();
         });
       });
